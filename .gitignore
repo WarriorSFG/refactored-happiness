@@ -141,3 +141,40 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+*.pyc
+__pycache__
+
+# Support for --embedded configs
+emsdk/emscripten
+emsdk/emscripten.old
+emsdk/emscripten_cache
+emsdk/emscripten_cache__last_clear
+emsdk/emscripten_sanity
+emsdk/emscripten_sanity_wasm
+
+# Tags files that get generated at runtime
+emsdk/emscripten-releases-tot.txt
+
+# File that get download/extracted by emsdk itself
+emsdk/ccache
+emsdk/gnu
+emsdk/upstream
+emsdk/fastcomp
+emsdk/fastcomp-clang/
+emsdk/llvm
+emsdk/ninja
+emsdk/releases
+emsdk/clang
+emsdk/emscripten
+emsdk/git
+emsdk/node
+emsdk/python
+emsdk/temp
+emsdk/downloads
+emsdk/crunch
+emsdk/java
+emsdk/mingw
+emsdk/spidermonkey
+emsdk/binaryen
+emsdk/firefox

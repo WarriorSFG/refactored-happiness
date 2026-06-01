@@ -1,0 +1,29 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "Emscripten: build to WebAssembly",
+            "command": "C:\\Users\\Samarth\\Documents\\GitHub\\refactored-happiness\\emsdk\\upstream\\emscripten\\emcc.bat", 
+            "args": [
+                "-fdiagnostics-color=always",
+                "-O3",          
+                "--bind",       
+                "${file}",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.js"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Compiles C++ to Wasm using Emscripten"
+        }
+    ],
+    "version": "2.0.0"
+}
