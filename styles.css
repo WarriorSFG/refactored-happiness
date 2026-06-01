@@ -3,15 +3,73 @@ body {
     font-size: 20px; 
     background-color: #f4f4f9; 
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-.row { 
-    display: flex; 
-    margin-bottom: 5px; 
+
+h2 {
+    margin-bottom: 5px;
+    color: #333;
 }
-.cell { 
-    width: 30px; height: 30px; 
-    border: 1px solid #ccc; 
-    text-align: center; line-height: 30px; 
-    cursor: pointer; background: white;
-    margin-right: 5px;
+
+#status {
+    font-weight: bold;
+    margin-bottom: 15px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#board {
+    margin-top: 10px;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+
+    width: 50vw;
+    max-width: 950px;
+    min-width: 550px;
+}
+
+.hex-cell {
+    fill: #ffffff;
+    stroke: #333333;
+    stroke-width: 1.5;
+    cursor: pointer;
+    transition: fill 0.2s ease, opacity 0.2s ease;
+}
+
+.hex-cell:hover {
+    opacity: 0.85;
+}
+
+.border-red {
+    stroke: #ff0000;
+    stroke-width: 5;
+    fill: none;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+
+.border-blue {
+    stroke: #0000ff;
+    stroke-width: 5;
+    fill: none;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+
+.label-red {
+    fill: #ff0000;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.label-blue {
+    fill: #0000ff;
+    font-weight: bold;
+    font-size: 16px;
 }
