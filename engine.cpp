@@ -175,7 +175,7 @@ public:
     }
 
     void Run(){
-        std::shuffle(AvailableMoves.begin(), AvailableMoves.end(), gen);
+        shuffle(AvailableMoves.begin(), AvailableMoves.end(), gen);
         for(const auto& move : AvailableMoves){
             Move(string(1, Player), move.first, move.second);
             Player = (Player == 'X') ? 'O' : 'X';

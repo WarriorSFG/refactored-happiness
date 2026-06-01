@@ -4,6 +4,13 @@ A browser-based implementation of the classic **Hex** strategy board game, featu
 
 ---
 
+<table>
+  <tr>
+    <td><img src="screenshots/image1.png" alt="Screenshot 1" width="100%"></td>
+    <td><img src="screenshots/image2.png" alt="Screenshot 2" width="100%"></td>
+  </tr>
+</table>
+
 ## Table of Contents
 
 - [About the Game](#about-the-game)
