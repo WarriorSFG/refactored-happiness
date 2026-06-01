@@ -1,5 +1,7 @@
 let gameBoard;
 let currentPlayer = 'X';
+let isAIEnabled = true;
+
 const width = 5;  
 const height = 5; 
 
@@ -12,19 +14,57 @@ function handleCellClick(x, y) {
     const moveSuccessful = gameBoard.Move(currentPlayer, x, y);
             
     if (moveSuccessful) {
-        if (gameBoard.CheckForWin(currentPlayer)) {
-            const statusText = document.getElementById('status');
-            statusText.innerText = `Player ${currentPlayer} Wins!`;
-            statusText.style.color = currentPlayer === 'X' ? '#ff0000' : '#0000ff';
-            document.getElementById('board').style.pointerEvents = 'none'; // Lock board
-        } else {
-            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-            const statusText = document.getElementById('status');
-            statusText.innerText = `Player ${currentPlayer}'s Turn`;
-            statusText.style.color = currentPlayer === 'X' ? '#ff0000' : '#0000ff';
+        if (processGameEndState()) {
+            renderBoard();
+            return;
         }
-        renderBoard();
+
+        if (!isAIEnabled) {
+            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+            updateStatusDisplay();
+            renderBoard();
+        } else {
+            currentPlayer = 'O'; 
+            updateStatusDisplay();
+            renderBoard();
+
+            document.getElementById('board').style.pointerEvents = 'none';
+
+            setTimeout(() => {
+                const aiMove = gameBoard.GetBestMoveAI(currentPlayer, 100); 
+                const aiX = aiMove[0];
+                const aiY = aiMove[1];
+
+                if (aiX !== -1 && aiY !== -1) {
+                    gameBoard.Move(currentPlayer, aiX, aiY);
+                }
+
+                if (!processGameEndState()) {
+                    currentPlayer = 'X'; 
+                    updateStatusDisplay();
+                    document.getElementById('board').style.pointerEvents = 'auto'; 
+                }
+                renderBoard();
+            }, 100); 
+        }
+    }    
+}
+
+function processGameEndState() {
+    if (gameBoard.CheckForWin(currentPlayer)) {
+        const statusText = document.getElementById('status');
+        statusText.innerText = `Player ${currentPlayer} Wins!`;
+        statusText.style.color = currentPlayer === 'X' ? '#ff0000' : '#0000ff';
+        document.getElementById('board').style.pointerEvents = 'none'; 
+        return true;
     }
+    return false;
+}
+
+function updateStatusDisplay() {
+    const statusText = document.getElementById('status');
+    statusText.innerText = `Player ${currentPlayer}'s Turn`;
+    statusText.style.color = currentPlayer === 'X' ? '#ff0000' : '#0000ff';
 }
 
 function renderBoard() {
